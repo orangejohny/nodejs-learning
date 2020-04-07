@@ -3,12 +3,14 @@ var rect = require('./rectangle');
 function solveRect(l, b) {
     console.log('Solving for rectangle with l = "' + l + '" and b = "' + b + '"');
 
-    if (l <= 0 || b <= 0) {
-        console.log('Recatngle dimensions should be positive');
-    } else {
-        console.log('The area is "' + rect.area(l, b));
-        console.log('The perimeter is "' + rect.perimeter(l, b));
-    }
+    rect(l, b, (err, rectangle) => {
+        if (err) {
+            console.log('ERROR: ', err.message);
+        } else {
+            console.log('Area: ', rectangle.area());
+            console.log('Perimeter: ', rectangle.perimeter());
+        }
+    });
 }
 
 solveRect(2, 4);
